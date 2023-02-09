@@ -341,6 +341,7 @@ width: 100%;
   justify-content: space-evenly;
   flex-wrap: wrap;
   margin-top: 80px;
+  overflow: hidden;
 }
 
 .men-and-women img {
@@ -734,7 +735,7 @@ video {
   border-radius: 5px;
 }
 .shipping-section {
-  height: 150vh;
+  height: 170vh;
 
 }
 footer {
@@ -744,7 +745,7 @@ footer {
 
 @media(max-width: 700px) {
   .shipping-section {
-    height: 200vh;
+    height: 280vh;
   }
 }
 
@@ -761,10 +762,12 @@ footer {
 }
 
 @media(max-width: 500px) {
+  .about-section {
+    height: 155vh;
+  }
 
 .shipping-section {
-  /* padding-bottom: 180%; */
-  /* height: 250vh; */
+  
 }
 .landing-heading {
   text-align: center;
