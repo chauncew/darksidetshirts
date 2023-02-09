@@ -16,7 +16,7 @@ body {
 /* Checkout Modal Styles */
 .checkout-modal {
   position: absolute;
-  top: -10%;
+  top: -15%;
   left: 50%;
   transform: translate(-50%, -10%);
   text-align: center;
@@ -272,6 +272,7 @@ width: 100%;
   height: 100vh;
   width: 100%;
   position: relative;
+  overflow-x: hidden;
 }
 
 .about-section video {
@@ -300,9 +301,10 @@ width: 100%;
 }
 
 .about-info p {
-  font-size: clamp(1.4rem, 1.5vw, 2rem);
+  font-size: clamp(1.2rem, 1.5vw, 2rem);
   line-height: 1.5;
   letter-spacing: 1.3px;
+  margin-right: 40px;
 }
 
 /* Shipping Section Styles */
@@ -310,8 +312,8 @@ width: 100%;
   width: 100%;
   background: url('./images/footerBkg.jpg')center center/cover no-repeat;
   color: #fff;
-  overflow: hidden;
-  padding: 80px 0;
+  overflow-x:  hidden ;
+  padding-bottom: 80px;
 }
 
 .shipping-heading {
@@ -365,11 +367,11 @@ width: 100%;
 }
 
 .info-icons {
-  font-size: clamp(1.8rem, 2.8vw, 3.5rem);
+  font-size: clamp(1.3rem, 1.8vw, 2.8rem);
 }
 
 .info-para {
-  font-size: clamp(1.8rem, 2.8vw, 3.5rem);
+  font-size: clamp(1.3rem, 1.8vw, 2.8rem);
 }
 
 .info-para2 {
@@ -740,6 +742,12 @@ footer {
 }
 }
 
+@media(max-width: 700px) {
+  .shipping-section {
+    height: 200vh;
+  }
+}
+
 @media(max-width: 645px) {
 .social-icons {
   width: 100%;
@@ -755,7 +763,8 @@ footer {
 @media(max-width: 500px) {
 
 .shipping-section {
-  height: 170vh;
+  /* padding-bottom: 180%; */
+  /* height: 250vh; */
 }
 .landing-heading {
   text-align: center;
@@ -763,6 +772,13 @@ footer {
 } 
 
 @media(max-width: 350px) {
+  .about-info {
+    width: 100%;
+    padding-right: 30px;
+  }
+  .about-info h1 {
+    padding-right: 30px;
+  }
   .shirts {
     width: 280px;
   }
