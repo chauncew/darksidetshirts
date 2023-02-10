@@ -31,7 +31,7 @@ body {
 }
 
 .checkout-modal.active {
-  top: 25%;
+  top: 45%;
 }
 
 .checkout-modal span {
@@ -415,7 +415,7 @@ footer {
   font-size: clamp(1rem, 2vw, 2rem);
 }
 
-/* Exclusive Section Styles */
+/*  Section Styles */
 .exclusives {
   padding-bottom: 80px;
   width: 100%;
@@ -441,13 +441,13 @@ footer {
   letter-spacing: 1.5px;
   text-align: center;
   color: #fff;
-  height: 80px;
+  height: 90px;
   width: 100%;
   transform: translateX(-100%);
   transition: 0.3s ease-in;
   cursor: pointer;
   line-height: 1.3;
-  padding-bottom: 10px;
+  /* padding-bottom: 15px; */
 }
 
 .shirts:hover .exclusive-info{
