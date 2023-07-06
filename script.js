@@ -217,6 +217,8 @@ const changeUnits = (action, id) => {
 //This function will display the checkout modal
 checkout.addEventListener('click', () => {
   checkoutModal.classList.add('active')
+  total.innerHTML = `$<span></span>`;
+  cartItemsEl.innerHTML = ''
 })
 
 
