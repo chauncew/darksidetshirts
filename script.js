@@ -162,7 +162,7 @@ const renderSubtotal = () => {
     totalPrice += item.price * item.numberOfUnits
     totalItems += item.numberOfUnits
   })
-  total.innerHTML = `$<span>${totalPrice}</span>`
+  total.innerHTML = `$<span>${totalPrice.toFixed(2)}</span>`
   shoppingAmt.innerHTML = totalItems
 }
 
