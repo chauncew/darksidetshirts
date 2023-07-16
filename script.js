@@ -106,9 +106,10 @@ shoppingCart.addEventListener('click', () => {
 closeCart.addEventListener('click', () => {
   cartWrapper.classList.remove('cartWrapperActive')
   checkoutModal.classList.remove('active')
+  location.reload()
 })
 
-const renderProducts = () => {
+function renderProducts() {
   products.forEach((product) => {
     productsEl.innerHTML += `
             <div class="shirts">
@@ -127,9 +128,9 @@ renderProducts()
 
 //Add to cart array
 let cart = JSON.parse(localStorage.getItem('CART')) || []
-// updateCart();
+updateCart();
 
-const addToCart = (id) => {
+function addToCart(id)  {
   if (cart.some((item) => item.id === id)) {
     changeUnits('add', id)
   } else {
@@ -143,7 +144,7 @@ const addToCart = (id) => {
 }
 
 // This function will update the cart
-const updateCart = () => {
+function updateCart() {
   renderCartItems()
   renderSubtotal()
 
@@ -155,19 +156,20 @@ localStorage.getItem('CART')
 
 
 //This function will calculate and render the total price of items
-const renderSubtotal = () => {
+function renderSubtotal() {
   let totalPrice = 0
-  totalItems = 0
+  let totalItems = 0
   cart.forEach((item) => {
     totalPrice += item.price * item.numberOfUnits
     totalItems += item.numberOfUnits
+    
   })
   total.innerHTML = `$<span>${totalPrice.toFixed(2)}</span>`
   shoppingAmt.innerHTML = totalItems
 }
 
 //This function will update the cart items
-const renderCartItems = () => {
+function renderCartItems() {
   cartItemsEl.innerHTML = '' //This will clear the cart and not duplicate cart item
   cart.forEach((item) => {
     cartItemsEl.innerHTML += `
@@ -190,13 +192,13 @@ const renderCartItems = () => {
 }
 
 //This function will remove items from the cart
-const removeItem = (id) => {
+function removeItem(id) {
   cart = cart.filter((item) => item.id !== id)
   updateCart()
 }
 
 //This function will change the number of units add or subtracted
-const changeUnits = (action, id) => {
+function changeUnits(action, id) {
   cart = cart.map((item) => {
     let numberOfUnits = item.numberOfUnits
     if (item.id === id) {
@@ -210,16 +212,21 @@ const changeUnits = (action, id) => {
       ...item,
       numberOfUnits,
     }
+
   })
   updateCart()
 }
 
 //This function will display the checkout modal
-checkout.addEventListener('click', () => {
+checkout.addEventListener('click', function() {
   checkoutModal.classList.add('active')
   total.innerHTML = `$<span></span>`;
   cartItemsEl.innerHTML = ''
+  shoppingAmt.innerHTML = 0
+  // numberOfUnits = 0
+  localStorage.clear();
 })
+
 
 
 //Exclusive section animations
