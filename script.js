@@ -106,7 +106,9 @@ shoppingCart.addEventListener('click', () => {
 closeCart.addEventListener('click', () => {
   cartWrapper.classList.remove('cartWrapperActive')
   checkoutModal.classList.remove('active')
-  location.reload()
+  setTimeout(() => {
+    location.reload()
+  }, 1000);
 })
 
 function renderProducts() {
