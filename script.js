@@ -1,15 +1,15 @@
-const image1 = document.querySelector('.image1')
-const price = document.querySelectorAll('.price p')
-const shirts = document.querySelectorAll('.shirts')
-const shoppingAmt = document.querySelector('.shoppingAmt')
-const productsEl = document.querySelector('.products')
-const cartItemsEl = document.querySelector('.cartItems')
-const total = document.querySelector('.dollarTotal')
-const shoppingCart = document.querySelector('.cart')
-const cartWrapper = document.querySelector('.cartWrapper')
-const closeCart = document.querySelector('.closeCart')
-const checkout = document.querySelector('.checkoutBtn')
-const checkoutModal = document.querySelector('.checkout-modal')
+const image1 = document.querySelector('.image1');
+const price = document.querySelectorAll('.price p');
+const shirts = document.querySelectorAll('.shirts');
+const shoppingAmt = document.querySelector('.shoppingAmt');
+const productsEl = document.querySelector('.products');
+const cartItemsEl = document.querySelector('.cartItems');
+const total = document.querySelector('.dollarTotal');
+const shoppingCart = document.querySelector('.cart');
+const cartWrapper = document.querySelector('.cartWrapper');
+const closeCart = document.querySelector('.closeCart');
+const checkout = document.querySelector('.checkoutBtn');
+const checkoutModal = document.querySelector('.checkout-modal');
 
 
 // Sliding navigation animations
@@ -20,13 +20,13 @@ const nav = document.querySelectorAll('.nav');
 hamburger.addEventListener('click', () => {
     nav.forEach((navEl) => {
         navEl.classList.toggle('visible')
-    })
-})
+    });
+});
 closeButton.addEventListener('click', () => {
     nav.forEach((navEl) => {
         navEl.classList.remove('visible')
-    })
-})
+    });
+});
 
 //Exclusive Products
 let products = [
@@ -96,12 +96,11 @@ let products = [
   },
 ]
 
-// Landing page animations
 
 //This function will show the cart
 shoppingCart.addEventListener('click', () => {
   cartWrapper.classList.toggle('cartWrapperActive')
-})
+});
 
 closeCart.addEventListener('click', () => {
   cartWrapper.classList.remove('cartWrapperActive')
@@ -109,7 +108,7 @@ closeCart.addEventListener('click', () => {
   setTimeout(() => {
     location.reload()
   }, 1000);
-})
+});
 
 function renderProducts() {
   products.forEach((product) => {
@@ -123,10 +122,10 @@ function renderProducts() {
                 </div>
             </div>
         `
-  })
-}
+  });
+};
 
-renderProducts()
+renderProducts();
 
 //Add to cart array
 let cart = JSON.parse(localStorage.getItem('CART')) || []
@@ -140,21 +139,21 @@ function addToCart(id)  {
     cart.push({
       ...item,
       numberOfUnits: 1,
-    })
-  }
-  updateCart()
+    });
+  };
+  updateCart();
 }
 
 // This function will update the cart
 function updateCart() {
-  renderCartItems()
-  renderSubtotal()
+  renderCartItems();
+  renderSubtotal();
 
   //This will save items to local storage
   localStorage.setItem("CART", JSON.stringify(cart));
-}
+};
 
-localStorage.getItem('CART')
+localStorage.getItem('CART');
 
 
 //This function will calculate and render the total price of items
@@ -165,10 +164,10 @@ function renderSubtotal() {
     totalPrice += item.price * item.numberOfUnits
     totalItems += item.numberOfUnits
     
-  })
+  });
   total.innerHTML = `$<span>${totalPrice.toFixed(2)}</span>`
   shoppingAmt.innerHTML = totalItems
-}
+};
 
 //This function will update the cart items
 function renderCartItems() {
@@ -190,14 +189,14 @@ function renderCartItems() {
         </div>
     </div>
 `
-  })
-}
+  });
+};
 
 //This function will remove items from the cart
 function removeItem(id) {
   cart = cart.filter((item) => item.id !== id)
-  updateCart()
-}
+  updateCart();
+};
 
 //This function will change the number of units add or subtracted
 function changeUnits(action, id) {
@@ -208,34 +207,44 @@ function changeUnits(action, id) {
         numberOfUnits--
       } else if (action === 'add' && numberOfUnits < item.inStock) {
         numberOfUnits++
-      }
-    }
+      };
+    };
     return {
       ...item,
       numberOfUnits,
-    }
+    };
 
-  })
-  updateCart()
-}
+  });
+  updateCart();
+};
 
 //This function will display the checkout modal
 checkout.addEventListener('click', function() {
-  checkoutModal.classList.add('active')
+  checkoutModal.classList.add('active');
   total.innerHTML = `$<span></span>`;
   cartItemsEl.innerHTML = ''
   shoppingAmt.innerHTML = 0
   // numberOfUnits = 0
   localStorage.clear();
-})
+});
 
 
 
-//Exclusive section animations
-gsap.registerPlugin()
-gsap.registerPlugin(ScrollTrigger)
+//Animations
+gsap.registerPlugin();
+gsap.registerPlugin(ScrollTrigger);
 
-
-
-//Men and women animations
-
+//Landing Page Navigation Animations
+gsap.fromTo('.nav-items ul li', {x: -2000, opacity: 0}, {x: 0, opacity: 1, duration: 0.7, stagger: 0.3})
+;
+//Exclusives Animations
+const shirtAnim = gsap.timeline();
+shirtAnim
+.fromTo('.shirts', {x: -2000, opacity: 0, scale: 7}, {x: 0, opacity: 1, scale: 1, duration: 0.7, stagger: 0.3})
+;
+ScrollTrigger.create({
+    animation: shirtAnim,
+    trigger: '#exclusives',
+    start: 'top 60%',
+    end: '100%',
+});
