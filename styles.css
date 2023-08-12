@@ -7,6 +7,7 @@
 
 html {
 scroll-behavior: smooth;
+height: auto;
 }
 
 body {
@@ -414,7 +415,7 @@ footer {
   font-size: clamp(1rem, 2vw, 2rem);
 }
 
-/*  Section Styles */
+/*Exclusives Section Styles */
 .exclusives {
   padding-bottom: 80px;
   width: 100%;
@@ -468,6 +469,7 @@ footer {
 }
 
 .shirts {
+  /* visibility: hidden; */
   height: 400px;
   width: 350px;
   position: relative;

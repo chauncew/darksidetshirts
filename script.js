@@ -240,7 +240,7 @@ gsap.fromTo('.nav-items ul li', {x: -2000, opacity: 0}, {x: 0, opacity: 1, durat
 //Exclusives Animations
 const shirtAnim = gsap.timeline();
 shirtAnim
-.fromTo('.shirts', {x: -2000, opacity: 0, scale: 7}, {x: 0, opacity: 1, scale: 1, duration: 0.7, stagger: 0.3})
+.fromTo('.shirts', {y: -2000, opacity: 0, scale: 7}, {y: 0, opacity: 1, scale: 1, duration: 0.7, stagger: 0.3})
 ;
 ScrollTrigger.create({
     animation: shirtAnim,
